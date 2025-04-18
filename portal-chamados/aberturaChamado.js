@@ -36,8 +36,8 @@ const amostraDeChamadas = `
                                     <div>
                                         <label class="modal-text">Está intermitênte?</label>
                                         <select name="categoriaServico" id="categoriaServico" class="cx-entrada">
-                                            <option value="sim" class="cx-entrada">Sim</option>
-                                            <option value="nao" class="cx-entrada">Não</option>
+                                            <option value="sim" class="cx-entrada">Não</option>
+                                            <option value="nao" class="cx-entrada">Sim</option>
                                         </select>
                                     </div>
 
@@ -74,34 +74,69 @@ const configuracaoDeEquipamentos = `
                                 </div>
                             `;
 
+const categoriaProblema = `<select name="categoriaProblema" id="categoriaProblema" class="cx-entrada">
+                            <option value="selecione" label="Selecione" class="cx-entrada" selected>-- SELECIONE --</option>
+                            <option value="nao-faz-chamadas" class="cx-entrada">(1). (Inoperância Parcial) - Não Faz Chamadas</option>
+                            <option value="nao-recebe-chamadas" class="cx-entrada">(2). (Inoperância Parcial) - Não Recebe Chamadas</option>
+                            <option value="nao-faz-nao-recebe-chamadas" class="cx-entrada">(3). (Inoperância Total) - Não Faz E Não Chamadas</option>
+                            <option value="problemas-audio" class="cx-entrada">(5). Problemas no Áudio das Chamadas (Voz Robótizada, Picotamento de Voz)</option>
+                            <option value="configuracao-equipamento" class="cx-entrada">(6). Configuração de Equipamentos</option>
+                            <option value="ajustes" class="cx-entrada">(7). Alteração de Nomes, Senhas, Desvios de Ramais</option>
+                            <option value="solicitacao-insumos" class="cx-entrada">(8). Solicitação de Insumos (Aparelho IP, Fontes POE, Cabos de Rede, Fone de Ouvido)</option>
+                        </select> `;
+
 // Obtém sessão de problema
 const categoriaServico = document.getElementById('categoriaServico');
-const categoriaProblema = document.getElementById('categoriaProblema');
+const containerProcedimentos = document.getElementById('container-procedimentos');
 const adicionarMensagem = document.getElementById('adicionarMensagem');
 
-categoriaProblema.addEventListener('click', () => {
+categoriaServico.addEventListener('click', () => {
 
-    // Pega opção selecionado pelo Selected
-    const valorSelecionado = categoriaProblema.value;
-    console.log(valorSelecionado);
+    const valorSelecionadoCategoriaServico = categoriaServico.value;
+    console.log(valorSelecionadoCategoriaServico);
 
-    // Pega ID do container onde será montado o conteúdo
-    const container = document.getElementById('container');
+    if (valorSelecionadoCategoriaServico=="selecione") {
+        const containerProblema = document.getElementById('container-problema');
+        containerProblema.innerHTML = ``;
+        const containerCategoriaProblema = document.getElementById('container-categoria-problema');
+        containerCategoriaProblema.innerHTML = ``;
+        containerProcedimentos.innerHTML = ``;
 
-    if (valorSelecionado=="selecione") {
-        container.innerHTML = ``;
-    } else if (valorSelecionado=="nao-faz-chamadas" || valorSelecionado=="nao-recebe-chamadas" || valorSelecionado=="nao-faz-nao-recebe-chamadas" || valorSelecionado=="intermitencia-chamadas") {
-        container.innerHTML = amostraDeChamadas;   
-    } else if (valorSelecionado=="problemas-audio") {
+    } else if (valorSelecionadoCategoriaServico=="noc") {
+        const containerCategoriaProblema = document.getElementById('container-categoria-problema');
+        containerCategoriaProblema.innerHTML = categoriaProblema;
 
-    } else if (valorSelecionado=="configuracao-equipamento") {
-        container.innerHTML = configuracaoDeEquipamentos;
+        containerCategoriaProblema.addEventListener('click',  () => {
+            // Pega opção selecionado pelo Selected
+            const categoriaProblema = document.getElementById('categoriaProblema'); 
+            const valorSelecionado = categoriaProblema.value;
+            console.log(valorSelecionado);
+        
+            // Pega ID do container onde será montado o conteúdo
+            const containerProblema = document.getElementById('container-problema');
+
+            if (valorSelecionado=="selecione") {
+                containerProblema.innerHTML = ``;
+                containerProcedimentos.innerHTML = ``;
+            } else if (valorSelecionado=="nao-faz-chamadas" || valorSelecionado=="nao-faz-nao-recebe-chamadas" || valorSelecionado=="intermitencia-chamadas") {
+                containerProblema.innerHTML = amostraDeChamadas;   
+            } else if (valorSelecionado=="nao-recebe-chamadas") {
+                containerProcedimentos.innerHTML = `<h1>teste</h1>`;
+                containerProblema.innerHTML = amostraDeChamadas; 
+            } else if (valorSelecionado=="problemas-audio") {
+        
+            } else if (valorSelecionado=="configuracao-equipamento") {
+                containerProblema.innerHTML = configuracaoDeEquipamentos;
+            }
+        });
     }
 });
 
 adicionarMensagem.addEventListener('click', () => {
-    const containerMensagem = document.getElementById('containerMensagem');
-    containerMensagem.innerHTML = `<textarea name="ServicoMensagem" rows="10" cols=100 class="cx-entrada"></textarea>`;
-});
+            const containerMensagem = document.getElementById('containerMensagem');
+            containerMensagem.innerHTML = `<textarea name="ServicoMensagem" rows="10" cols=100 class="cx-entrada"></textarea>`;
+        });
+
+
 
 

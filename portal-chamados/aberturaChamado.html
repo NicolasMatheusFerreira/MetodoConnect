@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Método Conect</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Método Coonect</title>
+    <link rel="stylesheet" type="text/css" href="aberturaChamado.css">
     <link rel="shortcut icon" href="assets/favicom.ico" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 
@@ -56,33 +56,26 @@
                         </table>
                     </div>
                 
-                    <div class="servico">
+                    <div class="dadosServico">
                         <h3>Serviço</h3>
             
                         <select name="categoriaServico" id="categoriaServico" class="cx-entrada">
-                            <option value="elementoA" id="problemaA" class="cx-entrada">-- SELECIONE --</option>
-                            <option value="elementoC" class="cx-entrada">Serviço</option>
-                            <option value="elementoB" class="cx-entrada">Suporte Técnico</option>
-                            <option value="elementoC" class="cx-entrada">Portabilidade</option>
+                            <option value="selecione" class="cx-entrada">-- SELECIONE --</option>
+                            <option value="servico" class="cx-entrada">Serviço</option>
+                            <option value="noc" class="cx-entrada">Suporte Técnico</option>
+                            <option value="stfc" class="cx-entrada">Portabilidade</option>
                         </select>
-
-                        <select name="categoriaProblema" id="categoriaProblema" class="cx-entrada">
-                            <option value="selecione" label="Selecione" class="cx-entrada" selected>-- SELECIONE --</option>
-                            <option value="nao-faz-chamadas" class="cx-entrada">(1). (Inoperância Parcial) - Não Faz Chamadas</option>
-                            <option value="nao-recebe-chamadas" class="cx-entrada">(2). (Inoperância Parcial) - Não Recebe Chamadas</option>
-                            <option value="nao-faz-nao-recebe-chamadas" class="cx-entrada">(3). (Inoperância Total) - Não Faz E Não Chamadas</option>
-                            <option value="problemas-audio" class="cx-entrada">(5). Problemas no Áudio das Chamadas (Voz Robótizada, Picotamento de Voz)</option>
-                            <option value="configuracao-equipamento" class="cx-entrada">(6). Configuração de Equipamentos</option>
-                            <option value="ajustes" class="cx-entrada">(7). Alteração de Nomes, Senhas, Desvios de Ramais</option>
-                            <option value="solicitacao-insumos" class="cx-entrada">(8). Solicitação de Insumos (Aparelho IP, Fontes POE, Cabos de Rede, Fone de Ouvido)</option>
-                        </select> 
                         
-                        <div id="container">
+                        <div id="container-categoria-problema"></div>
+
+                        <div id="container-procedimentos"></div>
+
+                        <div id="container-problema">
                             <h3></h3>
                         </div>
                     </div>
 
-                    <div class="duvidas" id="duvidas">
+                    <div class="dadosDuvida" id="dadosDuvida">
                         <h3>Dúvidas</h3>
 
                         <i class="bi bi-plus-circle-fill" id="adicionarMensagem"></i>
@@ -93,7 +86,7 @@
 
                 <div class="footer">
                     <div class="abertura-chamado">
-                        <button class="btn-abrir-chamado" id="b">Abrir Chamado</button>
+                        <button class="btn-abrir-chamado" id="b" onclick="alert('Chamado Aberto Com sucesso!')">Abrir Chamado</button>
                     </div>
                 </div>
             </div>
@@ -102,7 +95,7 @@
 
     <footer></footer>
 
-    <script src="script.js"></script>
+    <script src="aberturaChamado.js"></script>
 </body>
 
 </html>

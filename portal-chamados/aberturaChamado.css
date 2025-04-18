@@ -92,8 +92,8 @@ body {
 .dadosContato table {
     width: 100%;
 }
-.servico {
-    margin-top: 5%;
+.dadosServico {
+    margin: 05% 0% 05% 0%;
     width: 100%;
 }
 
@@ -108,6 +108,13 @@ body {
 .bi-plus-circle-fill {
     color: white;
 }
+
+.dadosDuvida .bi-plus-circle-fill {
+    margin: 16px;
+    color: #888;
+    font-size: 27px;
+}
+
 /* Estilização da Modal Footer */
 
 .abertura-chamado {
@@ -120,20 +127,16 @@ body {
     font-weight: bolder;
     font-size: 22px;
     background-color: #888;
-    color: #3fa0a7;
+    color: #353535;;
     border-radius: 15px;
     padding: 10px 60px 10px 60px;;
 }
 
 .btn-abrir-chamado:hover {
     background-color:#3fa0a7;
-    color: #353535;
+    color: #000000;
     transform: scale(1.1);
     transition: .4s;
 }
 
-.duvidas .bi-plus-circle-fill {
-    margin: 16px;
-    color: #888;
-    font-size: 27px;
-}
+
