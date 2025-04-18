@@ -1,0 +1,139 @@
+/* Estiização Global da página */
+h1, h2, h3, h4, h5, h6 {
+    margin: 1%;
+    color: #c0c0c0 !important;  
+    font-weight: bold !important;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-image: url('assets/background-metodo-claro.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.cx-entrada {
+    width: 100%;
+    margin: 1%;
+    padding: 5px;
+    border-radius: 15px;
+    outline: none;
+    font-weight: bolder;
+    font-size: 18px;
+    color:#3fa0a7;
+    border-style: solid;
+    border-color: #888;
+    background-color: rgb(39, 39, 39);
+}
+
+.modal-text {
+    color: #c0c0c0;
+    font-weight: bolder;
+    margin: 15px 20px 0px 15px;
+}
+
+.modal {
+    display: none; /* Inicialmente escondido */
+    position:relative;
+    z-index: 1; /* Sobrepõe outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    overflow: auto; /* Habilita scroll se o conteúdo for grande */
+    background-color: rgba(0,0,0,0.6); /* Fundo semi-transparente */
+}
+
+.modal-conteudo {
+    background: linear-gradient(25deg, #000000, #03383c, #3fa0a7);
+    background-repeat: no-repeat;
+    margin: 15% auto; /* Centraliza verticalmente e horizontalmente */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Largura do conteúdo da modal */
+    border-radius: 25px;
+    border: solid #888;
+    position: relative;
+}
+
+.fechar-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.fechar-modal:hover, .fechar-modal:focus {
+
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilização da Modal - Header */
+.modal-header .dadosChamado {
+
+    width: 100%;
+    margin: 1%;
+    text-align: center;    
+}
+
+/* Estilização da Modal - Body */
+.modal-body {
+    margin-top: 0%;
+    width: 100%;
+}
+
+.dadosContato {
+    margin-top: 5%;
+}
+.dadosContato table {
+    width: 100%;
+}
+.servico {
+    margin-top: 5%;
+    width: 100%;
+}
+
+/* Estilização da Modal Body - Serviço*/
+
+.amostraDeChamadas {
+    width: 100%;
+}
+
+/* Estilização da Modal Body - Mensagem*/
+
+.bi-plus-circle-fill {
+    color: white;
+}
+/* Estilização da Modal Footer */
+
+.abertura-chamado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-abrir-chamado {
+    font-weight: bolder;
+    font-size: 22px;
+    background-color: #888;
+    color: #3fa0a7;
+    border-radius: 15px;
+    padding: 10px 60px 10px 60px;;
+}
+
+.btn-abrir-chamado:hover {
+    background-color:#3fa0a7;
+    color: #353535;
+    transform: scale(1.1);
+    transition: .4s;
+}
+
+.duvidas .bi-plus-circle-fill {
+    margin: 16px;
+    color: #888;
+    font-size: 27px;
+}

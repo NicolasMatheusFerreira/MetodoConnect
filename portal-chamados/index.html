@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método Conect</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="assets/favicom.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+        <button id="abrirModalBtn1">Abrir Modal</button>
+    
+        <div id="modal" class="modal">
+            <div class="modal-conteudo">
+                <span class="fechar-modal">&times;</span>
+
+                <div class="modal-header">
+                    <div class="dadosChamado">
+                        <h1>Abertura de Chamados</h1>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+                    <div class="dadosContato">
+                        <h3>Dados de Contato</h3>
+                
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="text" id="nome" name="nome" placeholder="Nome Completo" class="cx-entrada">
+                                </td>
+                
+                                <td>
+                                    <input type="tel" id="telefone" name="telefone" placeholder="Telefone" class="cx-entrada">
+                                </td>
+                
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="email" id="email" name="email" placeholder="E-mail" class="cx-entrada">
+                                </td>
+                
+                                <td>
+                                    <input type="tel" id="celular" name="celular" placeholder="Celular" class="cx-entrada">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                
+                    <div class="servico">
+                        <h3>Serviço</h3>
+            
+                        <select name="categoriaServico" id="categoriaServico" class="cx-entrada">
+                            <option value="elementoA" id="problemaA" class="cx-entrada">-- SELECIONE --</option>
+                            <option value="elementoC" class="cx-entrada">Serviço</option>
+                            <option value="elementoB" class="cx-entrada">Suporte Técnico</option>
+                            <option value="elementoC" class="cx-entrada">Portabilidade</option>
+                        </select>
+
+                        <select name="categoriaProblema" id="categoriaProblema" class="cx-entrada">
+                            <option value="selecione" label="Selecione" class="cx-entrada" selected>-- SELECIONE --</option>
+                            <option value="nao-faz-chamadas" class="cx-entrada">(1). (Inoperância Parcial) - Não Faz Chamadas</option>
+                            <option value="nao-recebe-chamadas" class="cx-entrada">(2). (Inoperância Parcial) - Não Recebe Chamadas</option>
+                            <option value="nao-faz-nao-recebe-chamadas" class="cx-entrada">(3). (Inoperância Total) - Não Faz E Não Chamadas</option>
+                            <option value="problemas-audio" class="cx-entrada">(5). Problemas no Áudio das Chamadas (Voz Robótizada, Picotamento de Voz)</option>
+                            <option value="configuracao-equipamento" class="cx-entrada">(6). Configuração de Equipamentos</option>
+                            <option value="ajustes" class="cx-entrada">(7). Alteração de Nomes, Senhas, Desvios de Ramais</option>
+                            <option value="solicitacao-insumos" class="cx-entrada">(8). Solicitação de Insumos (Aparelho IP, Fontes POE, Cabos de Rede, Fone de Ouvido)</option>
+                        </select> 
+                        
+                        <div id="container">
+                            <h3></h3>
+                        </div>
+                    </div>
+
+                    <div class="duvidas" id="duvidas">
+                        <h3>Dúvidas</h3>
+
+                        <i class="bi bi-plus-circle-fill" id="adicionarMensagem"></i>
+                        <div id="containerMensagem">
+
+                        </div>
+                    </div>
+
+                <div class="footer">
+                    <div class="abertura-chamado">
+                        <button class="btn-abrir-chamado" id="b">Abrir Chamado</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
