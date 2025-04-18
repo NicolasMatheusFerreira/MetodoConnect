@@ -30,6 +30,71 @@ window.addEventListener("click", (event) => {
     }
 });
 
+const nome = document.getElementById('nome');
+const email = document.getElementById('email');
+const telefone = document.getElementById('telefone');
+const celular = document.getElementById('celular');
+
+email.addEventListener('input', () => {
+    if (validaEmail(email.value))
+        email.style.border = '2px solid rgb(60, 230, 54)';
+    else email.style.border = '2px solid #e63636';
+});
+
+function validaEmail(email) {
+    const emailRegex = new RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+[a-zA-Z]{2,}$/);
+
+    if (emailRegex.test(email))
+        return true;
+    return false;
+}
+
+nome.addEventListener('input', () => {
+    if (validaNome())
+        nome.style.border = '2px solid rgb(60, 230, 54)';
+    else nome.style.border = '2px solid #e63636';
+});
+
+function validaNome() {
+    if (nome.value=="")
+        return false
+    return true;
+}
+
+function validaTelefone() {
+    const telefoneRegex = new RegExp(/^[0-9]{10,}$/);
+
+    if (telefoneRegex.test(telefone.value))
+        return true;
+    return false;
+}
+
+telefone.addEventListener('input', () => {
+    if (validaTelefone())
+        telefone.style.border = '2px solid rgb(60, 230, 54)';
+    else telefone.style.border = '2px solid #e63636';
+});
+
+function validaCelular() {
+    const celularRegex = new RegExp(/^[0-9]{10,}$/);
+
+    if (celularRegex.test(celular.value))
+        return true;
+    return false;
+}
+
+celular.addEventListener('input', () => {
+    if (validaCelular())
+        celular.style.border = '2px solid rgb(60, 230, 54)';
+    else celular.style.border = '2px solid #e63636';
+});
+
+function validaCampos() {
+   if (!validaNome() || (!validaEmail(email.value) && email.value>"") || !validaTelefone() || !validaCelular()) {
+            alert('Informações invalidas digite novamente');
+   }
+}
+
 const amostraDeChamadas = `
                                 <div class="amostraDeChamadas" id="amostraDeChamadas">
 
@@ -79,13 +144,14 @@ const categoriaProblema = `<select name="categoriaProblema" id="categoriaProblem
                             <option value="nao-faz-chamadas" class="cx-entrada">(1). (Inoperância Parcial) - Não Faz Chamadas</option>
                             <option value="nao-recebe-chamadas" class="cx-entrada">(2). (Inoperância Parcial) - Não Recebe Chamadas</option>
                             <option value="nao-faz-nao-recebe-chamadas" class="cx-entrada">(3). (Inoperância Total) - Não Faz E Não Chamadas</option>
-                            <option value="problemas-audio" class="cx-entrada">(5). Problemas no Áudio das Chamadas (Voz Robótizada, Picotamento de Voz)</option>
-                            <option value="configuracao-equipamento" class="cx-entrada">(6). Configuração de Equipamentos</option>
+                            <option value="problemas-audio" class="cx-entrada">(4). Problemas no Áudio das Chamadas (Voz Robótizada, Picotamento de Voz)</option>
+                            <option value="configuracao-equipamento" class="cx-entrada">(5). Configuração de Equipamentos</option>
+                            <option value="ajustes" class="cx-entrada">(6). Criação de Contas</option>
                             <option value="ajustes" class="cx-entrada">(7). Alteração de Nomes, Senhas, Desvios de Ramais</option>
                             <option value="solicitacao-insumos" class="cx-entrada">(8). Solicitação de Insumos (Aparelho IP, Fontes POE, Cabos de Rede, Fone de Ouvido)</option>
                         </select> `;
 
-// Obtém sessão de problema
+
 const categoriaServico = document.getElementById('categoriaServico');
 const containerProcedimentos = document.getElementById('container-procedimentos');
 const adicionarMensagem = document.getElementById('adicionarMensagem');
