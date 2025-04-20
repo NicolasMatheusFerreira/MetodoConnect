@@ -67,10 +67,4 @@ celular.addEventListener('input', () => {
 celular.addEventListener('blur', () => { celular.style.border = '1px solid #888'; });
 
 categoriaServico.addEventListener('click', () => { servicos();});
-
-const adicionarMensagem = document.getElementById('adicionarMensagem');
-
-adicionarMensagem.addEventListener('click', () => {
-    const containerMensagem = document.getElementById('containerMensagem');
-    containerMensagem.innerHTML = `<textarea name="ServicoMensagem" rows="10" cols=100 class="cx-entrada"></textarea>`;
-});
+adicionarMensagem.addEventListener('click', () => { campoMensagem()});
