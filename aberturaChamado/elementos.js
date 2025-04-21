@@ -17,11 +17,11 @@ function listaSelecao(opcoes) {
     });
     return selectDeDiagnostico;
 }
-function caixaTexto(a, b, div, legenda) {
+function caixaTexto(classe, div, legenda) {
     const caixaTexto = document.createElement('input');
-    caixaTexto.id = a;
-    caixaTexto.className = b;
-    caixaTexto.placeholder = legenda;
+    caixaTexto.className = classe;
+    caixaTexto.id = legenda.valor;
+    caixaTexto.placeholder = legenda.texto;
     div.appendChild(caixaTexto);
 }
 /*

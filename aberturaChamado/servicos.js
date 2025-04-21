@@ -65,18 +65,31 @@ function amostraDeChamadas(div) {
         return div;
 }
 function solicitacaoInsumos() {
+    containerProcedimentos.innerHTML = `<h4>Produto:</h4>`;
     containerProcedimentos.appendChild(listaSelecao([{ valor: 'selecione', texto: 'Selecione' }, { valor: 'aparelho-ip', texto: 'Aparelho IP' }, { valor: 'fonte-poe', texto: 'Fonte de Energia' }, { valor: 'cabo-rede', texto: 'Cabo de Rede Patch Cord' }, { valor: 'Fone de ouvido', texto: 'Fone de Ouvido' }]));
-    containerProcedimentos.addEventListener('input', () => {
-        const valorSelecionado = containerProcedimentos.children[0].value;
+    containerProcedimentos.children[1].addEventListener('input', () => {
+        const valorSelecionado = containerProcedimentos.children[1].value;
+        console.log(valorSelecionado);
 
-        if (valorSelecionado == 'aparelho-ip' || valorSelecionado == 'fonte-poe')
-            console.log('Equipamento Queimado?');
-        else if (valorSelecionado == 'fonte-poe' || valorSelecionado == 'cabo-rede')
+        if (valorSelecionado == 'aparelho-ip') {
+            containerProcedimentos.innerHTML += `<h4>Configuração  de Rede</h4>`;
+
+            containerProcedimentos.appendChild(listaSelecao([{ valor: 'selecione', texto: 'Selecione' },{ valor: 'dhcp', texto: 'DHCP' }, {valor: 'ip-fixo', texto: 'IP Fixo'}]));
+            console.log(containerProcedimentos);
+            containerProcedimentos.children[3].addEventListener('input', () => {
+                const valorSelecionado = containerProcedimentos.children[3].value;
+                
+                if (valorSelecionado=='ip-fixo') {
+                    console.log('ipfixo');
+                } 
+            });
+        } else if (valorSelecionado == 'fonte-poe' || valorSelecionado == 'cabo-rede')
             console.log('Equipamento Quebrado');
     });
 
-    const campos = ['CEP', 'Rua', 'Nº', 'Bairro', 'Cidade', 'Estado'];
+    const campos = [{valor: 'cep', texto: 'CEP'}, {valor: 'rua', texto: 'Rua'}, {valor: 'num', texto: 'Nº'}, {valor: 'bairro', texto: 'Bairro'}, {valor: 'cidade', texto: 'Cidade'}, {valor: 'estado', texto: 'Estado'}];
+    containerProblema.innerHTML = `<h4>Endereço:</h4>`;
     campos.forEach(campo => {
-        caixaTexto('teste', 'cx-entrada', containerProblema, campo);
+         caixaTexto('cx-entrada', containerProblema, campo);
     });
 }
