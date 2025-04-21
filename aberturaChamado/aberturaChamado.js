@@ -1,10 +1,5 @@
-// Obtém a modal
 const modal = document.getElementById("modal");
-
-// Obtém os botões que abrem a modal
 const btnAbrirModal1 = document.getElementById("abrirModalBtn1");
-
-// Obtém o elemento que fecha a modal
 const spanFechar = document.querySelector(".fechar-modal");
 
 // Função para abrir a modal
@@ -30,13 +25,14 @@ window.addEventListener("click", (event) => {
     }
 });
 
+// Validação dos campos de informações de contato cliente
+
 const nome = document.getElementById('nome');
 nome.addEventListener('input', () => {
-    if (validaNome())
+    if (validaNome(nome.value))
         nome.style.border = '2px solid rgb(60, 230, 54)';
     else nome.style.border = '2px solid #e63636';
 });
-
 nome.addEventListener('blur', () => { nome.style.border = '1px solid #888'; });
 
 const email = document.getElementById('email');
@@ -45,7 +41,6 @@ email.addEventListener('input', () => {
         email.style.border = '2px solid rgb(60, 230, 54)';
     else email.style.border = '2px solid #e63636';
 });
-
 email.addEventListener('blur', () => { email.style.border = '1px solid #888'; });
 
 const telefone = document.getElementById('telefone');
@@ -54,7 +49,6 @@ telefone.addEventListener('input', () => {
         telefone.style.border = '2px solid rgb(60, 230, 54)';
     else telefone.style.border = '2px solid #e63636';
 });
-
 telefone.addEventListener('blur', () => { telefone.style.border = '1px solid #888'; });
 
 const celular = document.getElementById('celular');
@@ -63,8 +57,10 @@ celular.addEventListener('input', () => {
         celular.style.border = '2px solid rgb(60, 230, 54)';
     else celular.style.border = '2px solid #e63636';
 });
-
 celular.addEventListener('blur', () => { celular.style.border = '1px solid #888'; });
 
-categoriaServico.addEventListener('click', () => { servicos();});
+// Sessão de categoria de serviços
+categoriaServico.addEventListener('click', () => { categoriaServicos()});
+
+// Sessão de observações do formulário
 adicionarMensagem.addEventListener('click', () => { campoMensagem()});
