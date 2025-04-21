@@ -4,12 +4,13 @@ const containerProcedimentos = document.getElementById('container-procedimentos'
 const containerProblema = document.getElementById('container-problema');
 
 function categoriaServicos() {
+
+    limparCampos();
     const categoriaServico = document.getElementById('categoriaServico').value;
     console.log(categoriaServico);
 
     switch (categoriaServico) {
         case "selecione":
-            limparCampos();
             containerCategoriaProblema.innerHTML = ``;
         break;
 
@@ -24,22 +25,24 @@ function categoriaServicos() {
                     limparCampos();
                 } else if (categoriaProblema == "nao-faz-chamadas" || categoriaProblema == "nao-faz-nao-recebe-chamadas") {
                     limparCampos();
-                    containerProblema.innerHTML = amostraDeChamadas;
+                    containerProblema = amostraDeChamadas(containerProblema);
                 } else if (categoriaProblema == "nao-recebe-chamadas") {
                     limparCampos();
                     containerProcedimentos.innerHTML = `<h1>teste</h1>`;
-                    containerProblema.innerHTML = amostraDeChamadas;
+                    containerProblema = amostraDeChamadas(containerProblema);
                 } else if (categoriaProblema == "solicitacao-insumos") {
                     limparCampos();
-                    containerProcedimentos.appendChild(listaSelecao([{ valor: 'aparelho-ip', texto: 'Aparelho IP' }, { valor: 'fonte-poe', texto: 'Fonte de Energia' }, { valor: 'cabo-rede', texto: 'Cabo Rede Patch Cord' }, { valor: 'Fone de ouvido', texto: 'Fone de Ouvido' }]));
-                    caixaTexto('teste', 'cx-entrada', containerProblema);
+                    solicitacaoInsumos();
                 }
             });
             break;
-
         default:
-            break;
     }
+}
+
+function limparCampos() {
+    containerProcedimentos.innerHTML = ``;
+    containerProblema.innerHTML = ``;
 }
 
 function listaSelecao(opcoes) {
@@ -56,49 +59,66 @@ function listaSelecao(opcoes) {
     });
     return selectDeDiagnostico;
 }
-
-function caixaTexto(a, b, div) {
+function caixaTexto(a, b, div, legenda) {
     const caixaTexto = document.createElement('input');
     caixaTexto.id = a;
     caixaTexto.className = b;
+    caixaTexto.placeholder = legenda;
     div.appendChild(caixaTexto);
 }
+/*
+function tabela() {
+    const tabela = document.createElement('tr');
+    const linhas = document.createElement('th');
+    
+    linhas.forEach(linha => {
+       linha.appendChil
+    });
+    tabela.appendChild(linhas);
+}*/
+function amostraDeChamadas(div) {
+    
+    div.innerHTML = `<label class="modal-text" id="intermitente">Está intermitênte?</label>`;
+    div.appendChild(listaSelecao([{valor: 'nao', texto: 'Não'}, {valor: 'sim', texto: 'Sim'}]));
 
-const amostraDeChamadas = `
-    <div class="amostraDeChamadas" id="amostraDeChamadas">
-        <label class="modal-text">Está intermitênte?
-            <select name="categoriaServico" id="categoriaServico" class="cx-entrada">
-                <option value="sim" class="cx-entrada">Não</option>
-                <option value="nao" class="cx-entrada">Sim</option>
-            </select>
-        </label>
-
-        <table>
+    div.innerHTML += `<table>
             <tr>
-                <th id="cenario1">
+                <th>
                         <label for="cenarioA" class="modal-text">Cenário A:
                             <input type="tel" id="numeroOrigem1" name="numeroOrigem" placeholder="Número de Origem" class="cx-entrada" required>                                
                             <input type="tel" id="numeroDestino1" name="numeroDestino" placeholder="Número de Destino" class="cx-entrada" required>
                         </label>
                 </th>
-                <th id="cenario2">
+                <th>
                         <label for="cenarioB" class="modal-text">Cenário B:
                             <input type="tel" id="numeroOrigem2" name="numeroOrigem" placeholder="Número de Origem" class="cx-entrada" required>                                
                             <input type="tel" id="numeroDestino2" name="numeroDestino" placeholder="Número de Destino" class="cx-entrada" required>
                         </label>
                 </th>
-                <th id="cenario3">
+                <th>
                         <label for="cenarioC" class="modal-text">Cenário C:
                             <input type="tel" id="numeroOrigem3" name="numeroOrigem" placeholder="Número de Origem" class="cx-entrada" required>                                
                             <input type="tel" id="numeroDestino3" name="numeroDestino" placeholder="Número de Destino" class="cx-entrada" required>
                         </label>
                 </th>
             </tr>
-        </table>
-    </div>
-`;
+        </table`;
+    return div;
+}
 
-function limparCampos() {
-    containerProcedimentos.innerHTML = ``;
-    containerProblema.innerHTML = ``;
+function solicitacaoInsumos() {
+    containerProcedimentos.appendChild(listaSelecao([{valor: 'selecione', texto: 'Selecione'}, { valor: 'aparelho-ip', texto: 'Aparelho IP'}, { valor: 'fonte-poe', texto: 'Fonte de Energia' }, { valor: 'cabo-rede', texto: 'Cabo de Rede Patch Cord' }, { valor: 'Fone de ouvido', texto: 'Fone de Ouvido' }]));
+    containerProcedimentos.addEventListener('input', () => {
+        const valorSelecionado = containerProcedimentos.children[0].value;
+
+        if (valorSelecionado == 'aparelho-ip' || valorSelecionado == 'fonte-poe')
+            console.log('Equipamento Queimado?');
+        else if (valorSelecionado == 'fonte-poe' || valorSelecionado == 'cabo-rede')
+            console.log('Equipamento Quebrado');
+    });
+
+    const campos = ['CEP', 'Rua', 'Nº', 'Bairro', 'Cidade', 'Estado'];
+    campos.forEach(campo => {
+        caixaTexto('teste', 'cx-entrada', containerProblema, campo);
+    });
 }
