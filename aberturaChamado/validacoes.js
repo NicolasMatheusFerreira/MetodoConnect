@@ -1,9 +1,8 @@
 function validaNome(nome) {
-    if (nome == "")
-        return false
-    return true;
+    if (nome >= "")
+        return true
+    return false;
 }
-
 function validaEmail(email) {
     const emailRegex = new RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+[a-zA-Z]{2,}$/);
 
@@ -11,7 +10,6 @@ function validaEmail(email) {
         return true;
     return false;
 }
-
 function validaTelefone(telefone) {
     const telefoneRegex = new RegExp(/^[0-9]{10,}$/);
 
@@ -19,7 +17,6 @@ function validaTelefone(telefone) {
         return true;
     return false;
 }
-
 function validaCelular(celular) {
     const celularRegex = new RegExp(/^[0-9]{11,}$/);
 
@@ -27,9 +24,8 @@ function validaCelular(celular) {
         return true;
     return false;
 }
-
-function validaCampos(email, telefone, celular) {
-    if (!validaNome(nome) || (!validaEmail(email) && email > "") || !validaTelefone(telefone) || !validaCelular(celular)) {
-        alert('Informações invalidas digite novamente');
-    }
+function validaCampos(nome, email, telefone, celular) {
+    if (validaNome(nome) && validaEmail(email) && validaTelefone(telefone) && validaCelular(celular)) {
+        alert('Formulário enviado com sucesso!');
+    } else alert('Informações invalidas digite novamente');
 }

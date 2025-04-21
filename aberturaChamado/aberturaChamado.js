@@ -57,10 +57,11 @@ celular.addEventListener('input', () => {
         celular.style.border = '2px solid rgb(60, 230, 54)';
     else celular.style.border = '2px solid #e63636';
 });
+const abrirChamado = document.getElementById('btn-abrir-chamado');
+abrirChamado.addEventListener('click', () => { validaCampos(nome.value, email.value, telefone.value, celular.value)});
+
 celular.addEventListener('blur', () => { celular.style.border = '1px solid #888'; });
-
 // Sessão de categoria de serviços
-categoriaServico.addEventListener('click', () => { categoriaServicos()});
-
+categoriaServico.addEventListener('input', () => { categoriaServicos() });
 // Sessão de observações do formulário
-adicionarMensagem.addEventListener('click', () => { campoMensagem()});
+adicionarMensagem.addEventListener('click', () => { campoMensagem() });
