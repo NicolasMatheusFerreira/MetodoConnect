@@ -92,7 +92,7 @@ function endereco() {
     const div = document.createElement('div');
     div.innerHTML = `<h4>Endereço:</h4>`;
     campos.forEach(campo => {
-        div.appendChild(caixaTexto('cx-entrada', campo));
+        div.appendChild(caixaTexto(campo, 'cx-entrada'));
     });
     return div;
 }

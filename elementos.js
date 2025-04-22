@@ -16,7 +16,7 @@ function listaSelecao(opcoes, classe) {
     });
     return select;
 }
-function caixaTexto(classe, legenda) {
+function caixaTexto(legenda, classe) {
     const caixaTexto = document.createElement('input');
     caixaTexto.className = classe;
     caixaTexto.id = legenda.valor;
