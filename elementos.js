@@ -23,3 +23,11 @@ function caixaTexto(classe, div, legenda) {
     caixaTexto.placeholder = legenda.texto;
     div.appendChild(caixaTexto);
 }
+function areaTexto() {
+    const caixaDeTexto = document.createElement('textarea');
+    caixaDeTexto.className = "cx-entrada";
+    caixaDeTexto.id = "area-texto";
+    caixaDeTexto.maxLength = 200;
+
+    return caixaDeTexto;
+}

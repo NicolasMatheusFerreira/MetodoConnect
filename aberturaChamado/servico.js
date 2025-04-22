@@ -1,7 +1,7 @@
 // Sessão de categoria de serviços
 const containerCategoriaProblema = document.getElementById('container-categoria-problema');
 const containerProcedimentos = document.getElementById('container-procedimentos');
-var containerProblema = document.getElementById('container-problema');
+const containerProblema = document.getElementById('container-problema');
 
 function categoriaServicos() {
     const categoriaServico = document.getElementById('categoriaServico').value;
@@ -9,11 +9,11 @@ function categoriaServicos() {
     switch (categoriaServico) {
         case "selecione":
             limparCampos();
-        break;
+            break;
 
         case "noc":
-            categoriaProblemaNoc();    
-        break;
+            categoriaProblemaNoc();
+            break;
 
         default:
     }
@@ -70,7 +70,7 @@ function amostraDeChamadas() {
                 </th>
             </tr>
         </table`;
-        return div;
+    return div;
 }
 function solicitacaoInsumos() {
     containerProcedimentos.append(produto());
@@ -82,10 +82,10 @@ function solicitacaoInsumos() {
         }
     });
 
-    const campos = [{valor: 'cep', texto: 'CEP'}, {valor: 'rua', texto: 'Rua'}, {valor: 'num', texto: 'Nº'}, {valor: 'bairro', texto: 'Bairro'}, {valor: 'cidade', texto: 'Cidade'}, {valor: 'estado', texto: 'Estado'}];
+    const campos = [{ valor: 'cep', texto: 'CEP' }, { valor: 'rua', texto: 'Rua' }, { valor: 'num', texto: 'Nº' }, { valor: 'bairro', texto: 'Bairro' }, { valor: 'cidade', texto: 'Cidade' }, { valor: 'estado', texto: 'Estado' }];
     containerProblema.innerHTML = `<h4>Endereço:</h4>`;
     campos.forEach(campo => {
-         caixaTexto('cx-entrada', containerProblema, campo);
+        caixaTexto('cx-entrada', containerProblema, campo);
     });
 }
 

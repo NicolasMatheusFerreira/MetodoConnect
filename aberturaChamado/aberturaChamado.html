@@ -13,12 +13,11 @@
 </head>
 
 <body>
-    <header>        
+    <header>
     </header>
 
     <main>
         <button id="abrirModalBtn1">Abrir Modal</button>
-
         <div id="modal" class="modal">
             <div class="modal-conteudo">
                 <span class="fechar-modal">&times;</span>
@@ -37,20 +36,24 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <input type="text" id="nome" name="nome" placeholder="Nome Completo" class="cx-entrada" required>
+                                        <input type="text" id="nome" name="nome" placeholder="Nome Completo"
+                                            class="cx-entrada" required>
                                     </td>
 
                                     <td>
-                                        <input type="tel" id="telefone" name="telefone" placeholder="Telefone" class="cx-entrada" required>
+                                        <input type="tel" id="telefone" name="telefone" placeholder="Telefone"
+                                            class="cx-entrada" required>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="email" id="email" name="email" placeholder="E-mail" class="cx-entrada" required>
+                                        <input type="email" id="email" name="email" placeholder="E-mail"
+                                            class="cx-entrada" required>
                                     </td>
 
                                     <td>
-                                        <input type="tel" id="celular" name="celular" placeholder="Celular" class="cx-entrada" required>
+                                        <input type="tel" id="celular" name="celular" placeholder="Celular"
+                                            class="cx-entrada" required>
                                     </td>
                                 </tr>
                             </table>
@@ -68,12 +71,10 @@
 
                         <div id="container-categoria-problema"></div>
                         <div id="container-procedimentos"></div>
-                        <div id="container-problema">
-                            <h3></h3>
-                        </div>
+                        <div id="container-problema"></div>
                     </div>
 
-                    <div class="dadosDuvida" id="dadosDuvida">
+                    <div class="observacoes" id="observacoes">
                         <h3>Observações</h3>
 
                         <i class="bi bi-plus-circle-fill" id="adicionarMensagem"></i>
@@ -94,13 +95,15 @@
     <footer>
         <div class="container-rodape">
             <a href="https://www.metodotelecom.com.br/" target="_blank">Método Telecomunicações</a>
-        </div>        
+        </div>
     </footer>
 
-    <script src="elementos.js"></script>
-    <script src="servicos.js"></script>
     <script src="aberturaChamado.js"></script>
-    <script src="validacoes.js  "></script>
+    <script src="dadosContato.js"></script>
+    <script src="servico.js"></script>
     <script src="observacoes.js"></script>
+    <script src="../validacoes.js "></script>
+    <script src="../elementos.js"></script>
 </body>
+
 </html>

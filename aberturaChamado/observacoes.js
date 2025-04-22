@@ -1,22 +1,24 @@
+var controle = true;
+
 function campoMensagem() {
+    if (controle)
+        criarCaixaObservacoes();
+    
     const adicionarMensagem = document.getElementById('adicionarMensagem');
-    const containerMensagem = document.getElementById('containerMensagem');
-
-    var cont = 0;
-    qtdCaracteres = document.createElement('div');
-    containerMensagem.classList = 'legenda';
-
     adicionarMensagem.classList = "bi bi-dash-circle-fill";
-    containerMensagem.innerHTML = `<textarea name="ServicoMensagem" rows="10" cols=100 maxlength=400 id="caixa-texto" class="cx-entrada"></textarea>`;
+}
 
+function criarCaixaObservacoes() {
+    controle = false;
+    const containerMensagem = document.getElementById('containerMensagem');
+    const areaDeTexto = areaTexto();
+    containerMensagem.appendChild(areaDeTexto);
+
+    qtdCaracteres = document.createElement('div');
+    qtdCaracteres.classList = "legenda";
     containerMensagem.addEventListener('input', () => {
-        qtdCaracteres.innerHTML = `${++cont}`+` Caracteres`;
+        qtdCaracteres.innerHTML = `${areaDeTexto.value.length}` + ` Caracteres`;
         containerMensagem.appendChild(qtdCaracteres);
-    });
-
-    adicionarMensagem.addEventListener('click', () => {
-        adicionarMensagem.classList="bi bi-plus-circle-fill";
-        containerMensagem.innerHTML = ``;
     });
 }
 
