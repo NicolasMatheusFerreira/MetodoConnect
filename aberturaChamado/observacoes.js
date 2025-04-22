@@ -1,11 +1,9 @@
 var controle = true;
+const adicionarMensagem = document.getElementById('adicionarMensagem');
 
 function campoMensagem() {
     if (controle)
         criarCaixaObservacoes();
-    
-    const adicionarMensagem = document.getElementById('adicionarMensagem');
-    adicionarMensagem.classList = "bi bi-dash-circle-fill";
 }
 
 function criarCaixaObservacoes() {
@@ -20,6 +18,15 @@ function criarCaixaObservacoes() {
         qtdCaracteres.innerHTML = `${areaDeTexto.value.length}` + ` Caracteres`;
         containerMensagem.appendChild(qtdCaracteres);
     });
+
+    adicionarMensagem.classList = "bi bi-dash-circle-fill";
+
+    adicionarMensagem.addEventListener('click', () => {
+
+        if (controle==false)
+            containerMensagem.remove();
+        adicionarMensagem.classList = "bi bi-plus-circle-fill";
+     });
 }
 
 

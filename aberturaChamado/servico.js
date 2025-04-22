@@ -1,4 +1,3 @@
-// Sessão de categoria de serviços
 const containerCategoriaProblema = document.getElementById('container-categoria-problema');
 const containerProcedimentos = document.getElementById('container-procedimentos');
 const containerProblema = document.getElementById('container-problema');
@@ -9,8 +8,11 @@ function categoriaServicos() {
     switch (categoriaServico) {
         case "selecione":
             limparCampos();
+            categoriaProblemaNoc.innerHTML = ``;
+            containerCategoriaProblema.innerHTML = ``;
             break;
-
+        case "servico":
+            break;
         case "noc":
             categoriaProblemaNoc();
             break;
@@ -24,7 +26,6 @@ function categoriaProblemaNoc() {
     containerCategoriaProblema.addEventListener('input', () => {
 
         const categoriaProblema = document.getElementById('categoriaProblema').value;
-        console.log(categoriaProblema);
 
         limparCampos();
         if (categoriaProblema == "selecione") {
@@ -41,7 +42,7 @@ function categoriaProblemaNoc() {
 function intermitencia() {
     const div = document.createElement('div');
     div.style.width = "25%";
-    div.style.margin = "0% 2% 2% 1.5%";
+    div.style.margin = "1%";
     div.innerHTML = `<label class="modal-text" id="intermitente">Está intermitênte?</label>`;
     div.append(listaSelecao([{ valor: 'nao', texto: 'Não' }, { valor: 'sim', texto: 'Sim' }], "cx-entrada"));
     return div;
@@ -77,9 +78,8 @@ function solicitacaoInsumos() {
     containerProcedimentos.lastChild.addEventListener('input', () => {
         const valorSelecionado = containerProcedimentos.lastChild.lastChild.value;
 
-        if (valorSelecionado == 'aparelho-ip') {
+        if (valorSelecionado == 'aparelho-ip')
             containerProcedimentos.append(configuracaoDeRede());
-        }
     });
 
     const campos = [{ valor: 'cep', texto: 'CEP' }, { valor: 'rua', texto: 'Rua' }, { valor: 'num', texto: 'Nº' }, { valor: 'bairro', texto: 'Bairro' }, { valor: 'cidade', texto: 'Cidade' }, { valor: 'estado', texto: 'Estado' }];
@@ -92,7 +92,7 @@ function solicitacaoInsumos() {
 function produto() {
     const div = document.createElement('div');
     div.innerHTML = `<h4>Produto:</h4>`;
-    div.appendChild(listaSelecao([{ valor: 'selecione', texto: 'Selecione' }, { valor: 'aparelho-ip', texto: 'Aparelho IP' }, { valor: 'fonte-poe', texto: 'Fonte de Energia' }, { valor: 'cabo-rede', texto: 'Cabo de Rede Patch Cord' }, { valor: 'Fone de ouvido', texto: 'Fone de Ouvido' }]), "cx-entrada");
+    div.appendChild(listaSelecao([{ valor: 'selecione', texto: 'Selecione' }, { valor: 'aparelho-ip', texto: 'Aparelho IP' }, { valor: 'fonte-poe', texto: 'Fonte de Energia' }, { valor: 'cabo-rede', texto: 'Cabo de Rede Patch Cord' }, { valor: 'Fone de ouvido', texto: 'Fone de Ouvido' }], "cx-entrada"));
     return div;
 }
 
@@ -101,8 +101,4 @@ function configuracaoDeRede() {
     div.innerHTML = `<h4>Configuração  de Rede</h4>`;
     div.appendChild(listaSelecao([{ valor: 'selecione', texto: 'Selecione' }, { valor: 'dhcp', texto: 'DHCP' }, { valor: 'ip-fixo', texto: 'IP Fixo' }]), "cx-entrada");
     return div;
-}
-
-function aberturaChamado() {
-    validaCampos(nome.value, email.value, telefone.value, celular.value);
 }

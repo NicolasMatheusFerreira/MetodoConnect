@@ -27,7 +27,7 @@ function areaTexto() {
     const caixaDeTexto = document.createElement('textarea');
     caixaDeTexto.className = "cx-entrada";
     caixaDeTexto.id = "area-texto";
-    caixaDeTexto.maxLength = 200;
+    caixaDeTexto.maxLength = 250;
 
     return caixaDeTexto;
 }

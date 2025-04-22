@@ -26,7 +26,7 @@ window.addEventListener("click", (event) => {
 });
 
 // Sessão de categoria de serviços
-categoriaServico.addEventListener('input', () => { limparCampos(); categoriaServicos(); });
+categoriaServico.addEventListener('input', () => {limparCampos(); categoriaServicos(); });
 
 // Sessão de observações do formulário
 adicionarMensagem.addEventListener('click', () => {campoMensagem(); });
