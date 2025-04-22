@@ -12,6 +12,9 @@ function categoriaServicos() {
             containerCategoriaProblema.innerHTML = ``;
             break;
         case "servico":
+            limparCampos();
+            categoriaProblemaNoc.innerHTML = ``;
+            containerCategoriaProblema.innerHTML = ``;
             break;
         case "noc":
             categoriaProblemaNoc();
@@ -35,17 +38,9 @@ function categoriaProblemaNoc() {
             containerProblema.appendChild(intermitencia()); containerProblema.appendChild(amostraDeChamadas());
         } else if (categoriaProblema == "solicitacao-insumos") {
             solicitacaoInsumos();
+            containerProblema.appendChild(endereco());
         }
     });
-}
-
-function intermitencia() {
-    const div = document.createElement('div');
-    div.style.width = "25%";
-    div.style.margin = "1%";
-    div.innerHTML = `<label class="modal-text" id="intermitente">Está intermitênte?</label>`;
-    div.append(listaSelecao([{ valor: 'nao', texto: 'Não' }, { valor: 'sim', texto: 'Sim' }], "cx-entrada"));
-    return div;
 }
 function amostraDeChamadas() {
     const div = document.createElement('div');
@@ -73,6 +68,14 @@ function amostraDeChamadas() {
         </table`;
     return div;
 }
+function intermitencia() {
+    const div = document.createElement('div');
+    div.style.width = "25%";
+    div.style.margin = "1%";
+    div.innerHTML = `<label class="modal-text" id="intermitente">Está intermitênte?</label>`;
+    div.append(listaSelecao([{ valor: 'nao', texto: 'Não' }, { valor: 'sim', texto: 'Sim' }], "cx-entrada"));
+    return div;
+}
 function solicitacaoInsumos() {
     containerProcedimentos.append(produto());
     containerProcedimentos.lastChild.addEventListener('input', () => {
@@ -81,14 +84,18 @@ function solicitacaoInsumos() {
         if (valorSelecionado == 'aparelho-ip')
             containerProcedimentos.append(configuracaoDeRede());
     });
-
-    const campos = [{ valor: 'cep', texto: 'CEP' }, { valor: 'rua', texto: 'Rua' }, { valor: 'num', texto: 'Nº' }, { valor: 'bairro', texto: 'Bairro' }, { valor: 'cidade', texto: 'Cidade' }, { valor: 'estado', texto: 'Estado' }];
-    containerProblema.innerHTML = `<h4>Endereço:</h4>`;
-    campos.forEach(campo => {
-        caixaTexto('cx-entrada', containerProblema, campo);
-    });
 }
 
+function endereco() {
+    const campos = [{ valor: 'cep', texto: 'CEP' }, { valor: 'rua', texto: 'Rua' }, { valor: 'num', texto: 'Nº' }, { valor: 'bairro', texto: 'Bairro' }, { valor: 'cidade', texto: 'Cidade' }, { valor: 'estado', texto: 'Estado' }];
+
+    const div = document.createElement('div');
+    div.innerHTML = `<h4>Endereço:</h4>`;
+    campos.forEach(campo => {
+        div.appendChild(caixaTexto('cx-entrada', campo));
+    });
+    return div;
+}
 function produto() {
     const div = document.createElement('div');
     div.innerHTML = `<h4>Produto:</h4>`;

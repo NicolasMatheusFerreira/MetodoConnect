@@ -1,5 +1,5 @@
 function validaNome(nome) {
-    if (nome >= "")
+    if (nome > "")
         return true
     return false;
 }
@@ -25,7 +25,7 @@ function validaCelular(celular) {
     return false;
 }
 function validaCampos(nome, email, telefone, celular) {
-    if (validaNome(nome) && validaEmail(email) && validaTelefone(telefone) && validaCelular(celular)) {
+    if (validaNome(nome) && validaEmail(email) && validaTelefone(telefone) && validaCelular(celular))
         alert('Formulário enviado com sucesso!');
-    } else alert('Informações invalidas digite novamente');
+    else alert('Informações invalidas digite novamente');
 }

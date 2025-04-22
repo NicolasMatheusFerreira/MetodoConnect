@@ -3,31 +3,30 @@ function limparCampos() {
     containerProblema.innerHTML = ``;
 }
 function listaSelecao(opcoes, classe) {
-    const selectDeDiagnostico = document.createElement('select');
-    selectDeDiagnostico.className = classe;
-    selectDeDiagnostico.id = "categoriaProblema";
+    const select = document.createElement('select');
+    select.className = classe;
+    select.id = "categoriaProblema";
 
     opcoes.forEach(opcao => {
         const opcoes = document.createElement('option');
         opcoes.classList = classe;
         opcoes.value = opcao.valor;
         opcoes.text = opcao.texto;
-        selectDeDiagnostico.appendChild(opcoes);
+        select.appendChild(opcoes);
     });
-    return selectDeDiagnostico;
+    return select;
 }
-function caixaTexto(classe, div, legenda) {
+function caixaTexto(classe, legenda) {
     const caixaTexto = document.createElement('input');
     caixaTexto.className = classe;
     caixaTexto.id = legenda.valor;
     caixaTexto.placeholder = legenda.texto;
-    div.appendChild(caixaTexto);
+    return caixaTexto;
 }
 function areaTexto() {
     const caixaDeTexto = document.createElement('textarea');
     caixaDeTexto.className = "cx-entrada";
     caixaDeTexto.id = "area-texto";
-    caixaDeTexto.maxLength = 250;
-
+    caixaDeTexto.maxLength = 300;
     return caixaDeTexto;
 }
