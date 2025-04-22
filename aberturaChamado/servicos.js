@@ -26,7 +26,7 @@ function categoriaServicos() {
                 } else if (categoriaProblema == "nao-faz-chamadas" || categoriaProblema == "nao-faz-nao-recebe-chamadas") {
                     containerProblema = amostraDeChamadas(containerProblema);
                 } else if (categoriaProblema == "nao-recebe-chamadas") {
-                    containerProcedimentos.innerHTML = `<h1>teste</h1>`;
+                    containerProcedimentos.innerHTML = `<h1>RECOMENDAÇÃO DE CONTEÚDOS PARA RESOLUÇÃO</h1>`;
                     containerProblema = amostraDeChamadas(containerProblema);
                 } else if (categoriaProblema == "solicitacao-insumos") {
                     solicitacaoInsumos();
@@ -92,4 +92,12 @@ function solicitacaoInsumos() {
     campos.forEach(campo => {
          caixaTexto('cx-entrada', containerProblema, campo);
     });
+}
+function aberturaChamado() {
+    console.log(teste);
+    validaCampos(nome.value, email.value, telefone.value, celular.value);
+
+    const nome = document.getElementById('nome');
+    navigator.clipboard.writeText(nome.value);
+    console.log('copiado');
 }

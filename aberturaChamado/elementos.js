@@ -2,7 +2,6 @@ function limparCampos() {
     containerProcedimentos.innerHTML = ``;
     containerProblema.innerHTML = ``;
 }
-
 function listaSelecao(opcoes) {
     const selectDeDiagnostico = document.createElement('select');
     selectDeDiagnostico.className = "cx-entrada";
