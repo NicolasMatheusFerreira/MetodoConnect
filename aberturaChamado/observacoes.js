@@ -15,7 +15,7 @@ function campoMensagem() {
     });
 
     adicionarMensagem.addEventListener('click', () => {
-        adicionarMensagem.classList= "bi bi-plus-circle-fill";
+        adicionarMensagem.classList="bi bi-plus-circle-fill";
         containerMensagem.innerHTML = ``;
     });
 }

@@ -2,14 +2,14 @@ function limparCampos() {
     containerProcedimentos.innerHTML = ``;
     containerProblema.innerHTML = ``;
 }
-function listaSelecao(opcoes) {
+function listaSelecao(opcoes, classe) {
     const selectDeDiagnostico = document.createElement('select');
-    selectDeDiagnostico.className = "cx-entrada";
+    selectDeDiagnostico.className = classe;
     selectDeDiagnostico.id = "categoriaProblema";
 
     opcoes.forEach(opcao => {
         const opcoes = document.createElement('option');
-        opcoes.classList = "cx-entrada";
+        opcoes.classList = classe;
         opcoes.value = opcao.valor;
         opcoes.text = opcao.texto;
         selectDeDiagnostico.appendChild(opcoes);
@@ -23,13 +23,3 @@ function caixaTexto(classe, div, legenda) {
     caixaTexto.placeholder = legenda.texto;
     div.appendChild(caixaTexto);
 }
-/*
-function tabela() {
-    const tabela = document.createElement('tr');
-    const linhas = document.createElement('th');
-    
-    linhas.forEach(linha => {
-       linha.appendChil
-    });
-    tabela.appendChild(linhas);
-}*/

@@ -4,36 +4,38 @@ const containerProcedimentos = document.getElementById('container-procedimentos'
 var containerProblema = document.getElementById('container-problema');
 
 function categoriaServicos() {
-
-    limparCampos();
     const categoriaServico = document.getElementById('categoriaServico').value;
-    console.log(categoriaServico);
 
     switch (categoriaServico) {
         case "selecione":
-            containerCategoriaProblema.innerHTML = ``;
-            break;
+            limparCampos();
+        break;
 
         case "noc":
-            containerCategoriaProblema.appendChild(listaSelecao([{ valor: 'selecione', texto: '-- SELECIONE --' }, { valor: 'nao-faz-chamadas', texto: '(1). (Inoperância Parcial) - Não Faz Chamadas' }, { valor: 'nao-recebe-chamadas', texto: '(2). (Inoperância Parcial) - Não Recebe Chamadas' }, { valor: 'nao-faz-nao-recebe-chamadas', texto: '(3). (Inoperância Total) - Não Faz E Não recebe Chamadas' }, { valor: 'problemas-audio', texto: '(4). Problemas no Áudio das Chamadas (Voz Robótizada, Picotamento de Voz)' }, { valor: 'configuracao-equipamento', texto: '(5). Configuração de Equipamentos' }, { valor: 'ajustes', texto: '(6). Criação de Contas' }, { valor: 'ajustes', texto: '(7). Alteração de Nomes, Senhas, Desvios de Ramais' }, { valor: 'solicitacao-insumos', texto: '(8). Solicitação de Insumos (Aparelho IP, Fontes POE, Cabos de Rede, Fone de Ouvido)' }]));
-            containerCategoriaProblema.addEventListener('input', () => {
+            categoriaProblemaNoc();    
+        break;
 
-                const categoriaProblema = document.getElementById('categoriaProblema').value;
-                console.log(categoriaProblema);
-
-                limparCampos();
-                if (categoriaProblema == "selecione") {
-                } else if (categoriaProblema == "nao-faz-chamadas" || categoriaProblema == "nao-faz-nao-recebe-chamadas") {
-                   containerProblema.appendChild(intermitencia()); containerProblema.appendChild(amostraDeChamadas());
-                } else if (categoriaProblema == "nao-recebe-chamadas") {
-                    containerProblema.appendChild(intermitencia()); containerProblema.appendChild(amostraDeChamadas());
-                } else if (categoriaProblema == "solicitacao-insumos") {
-                    solicitacaoInsumos();
-                }
-            });
-            break;
         default:
     }
+}
+
+function categoriaProblemaNoc() {
+    containerCategoriaProblema.appendChild(listaSelecao([{ valor: 'selecione', texto: '-- SELECIONE --' }, { valor: 'nao-faz-chamadas', texto: '(1). (Inoperância Parcial) - Não Faz Chamadas' }, { valor: 'nao-recebe-chamadas', texto: '(2). (Inoperância Parcial) - Não Recebe Chamadas' }, { valor: 'nao-faz-nao-recebe-chamadas', texto: '(3). (Inoperância Total) - Não Faz E Não recebe Chamadas' }, { valor: 'problemas-audio', texto: '(4). Problemas no Áudio das Chamadas (Voz Robótizada, Picotamento de Voz)' }, { valor: 'configuracao-equipamento', texto: '(5). Configuração de Equipamentos' }, { valor: 'ajustes', texto: '(6). Criação de Contas' }, { valor: 'ajustes', texto: '(7). Alteração de Nomes, Senhas, Desvios de Ramais' }, { valor: 'solicitacao-insumos', texto: '(8). Solicitação de Insumos (Aparelho IP, Fontes POE, Cabos de Rede, Fone de Ouvido)' }], "cx-entrada"));
+    containerCategoriaProblema.addEventListener('input', () => {
+
+        const categoriaProblema = document.getElementById('categoriaProblema').value;
+        console.log(categoriaProblema);
+
+        limparCampos();
+        if (categoriaProblema == "selecione") {
+        } else if (categoriaProblema == "nao-faz-chamadas" || categoriaProblema == "nao-faz-nao-recebe-chamadas") {
+            containerProblema.appendChild(intermitencia()); containerProblema.appendChild(amostraDeChamadas());
+        } else if (categoriaProblema == "nao-recebe-chamadas") {
+            containerProblema.appendChild(intermitencia()); containerProblema.appendChild(amostraDeChamadas());
+        } else if (categoriaProblema == "solicitacao-insumos") {
+            solicitacaoInsumos();
+        }
+    });
 }
 
 function intermitencia() {
@@ -41,7 +43,7 @@ function intermitencia() {
     div.style.width = "25%";
     div.style.margin = "0% 2% 2% 1.5%";
     div.innerHTML = `<label class="modal-text" id="intermitente">Está intermitênte?</label>`;
-    div.append(listaSelecao([{ valor: 'nao', texto: 'Não' }, { valor: 'sim', texto: 'Sim' }]));
+    div.append(listaSelecao([{ valor: 'nao', texto: 'Não' }, { valor: 'sim', texto: 'Sim' }], "cx-entrada"));
     return div;
 }
 function amostraDeChamadas() {
@@ -90,21 +92,17 @@ function solicitacaoInsumos() {
 function produto() {
     const div = document.createElement('div');
     div.innerHTML = `<h4>Produto:</h4>`;
-    div.appendChild(listaSelecao([{ valor: 'selecione', texto: 'Selecione' }, { valor: 'aparelho-ip', texto: 'Aparelho IP' }, { valor: 'fonte-poe', texto: 'Fonte de Energia' }, { valor: 'cabo-rede', texto: 'Cabo de Rede Patch Cord' }, { valor: 'Fone de ouvido', texto: 'Fone de Ouvido' }]));
+    div.appendChild(listaSelecao([{ valor: 'selecione', texto: 'Selecione' }, { valor: 'aparelho-ip', texto: 'Aparelho IP' }, { valor: 'fonte-poe', texto: 'Fonte de Energia' }, { valor: 'cabo-rede', texto: 'Cabo de Rede Patch Cord' }, { valor: 'Fone de ouvido', texto: 'Fone de Ouvido' }]), "cx-entrada");
     return div;
 }
 
 function configuracaoDeRede() {
     const div = document.createElement('div');
     div.innerHTML = `<h4>Configuração  de Rede</h4>`;
-    div.appendChild(listaSelecao([{ valor: 'selecione', texto: 'Selecione' }, { valor: 'dhcp', texto: 'DHCP' }, { valor: 'ip-fixo', texto: 'IP Fixo' }]));
+    div.appendChild(listaSelecao([{ valor: 'selecione', texto: 'Selecione' }, { valor: 'dhcp', texto: 'DHCP' }, { valor: 'ip-fixo', texto: 'IP Fixo' }]), "cx-entrada");
     return div;
 }
-function aberturaChamado() {
-    console.log(teste);
-    validaCampos(nome.value, email.value, telefone.value, celular.value);
 
-    const nome = document.getElementById('nome');
-    navigator.clipboard.writeText(nome.value);
-    console.log('copiado');
+function aberturaChamado() {
+    validaCampos(nome.value, email.value, telefone.value, celular.value);
 }

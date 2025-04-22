@@ -59,11 +59,10 @@ celular.addEventListener('input', () => {
 });
 celular.addEventListener('blur', () => { celular.style.border = '1px solid #888'; });
 
-
 // Sessão de categoria de serviços
-categoriaServico.addEventListener('input', () => {categoriaServicos()});
+categoriaServico.addEventListener('input', () => {limparCampos(); categoriaServicos();});
 // Sessão de observações do formulário
-adicionarMensagem.addEventListener('click', () => {campoMensagem()});
+adicionarMensagem.addEventListener('click', () => {campoMensagem();});
 // Sessão de abertura de chamado do formulário
 const abrirChamado = document.getElementById('btn-abrir-chamado');
-abrirChamado.addEventListener('submit', () => { aberturaChamado()});
+abrirChamado.addEventListener('submit', () => { aberturaChamado();});
