@@ -1,7 +1,7 @@
 // Sessão de categoria de serviços
 const containerCategoriaProblema = document.getElementById('container-categoria-problema');
 const containerProcedimentos = document.getElementById('container-procedimentos');
-const containerProblema = document.getElementById('container-problema');
+var containerProblema = document.getElementById('container-problema');
 
 function categoriaServicos() {
 
@@ -24,10 +24,9 @@ function categoriaServicos() {
                 limparCampos();
                 if (categoriaProblema == "selecione") {
                 } else if (categoriaProblema == "nao-faz-chamadas" || categoriaProblema == "nao-faz-nao-recebe-chamadas") {
-                    containerProblema = amostraDeChamadas(containerProblema);
+                   containerProblema.appendChild(intermitencia()); containerProblema.appendChild(amostraDeChamadas());
                 } else if (categoriaProblema == "nao-recebe-chamadas") {
-                    containerProcedimentos.innerHTML = `<h1>RECOMENDAÇÃO DE CONTEÚDOS PARA RESOLUÇÃO</h1>`;
-                    containerProblema = amostraDeChamadas(containerProblema);
+                    containerProblema.appendChild(intermitencia()); containerProblema.appendChild(amostraDeChamadas());
                 } else if (categoriaProblema == "solicitacao-insumos") {
                     solicitacaoInsumos();
                 }
@@ -36,10 +35,17 @@ function categoriaServicos() {
         default:
     }
 }
-function amostraDeChamadas(div) {
-    
+
+function intermitencia() {
+    const div = document.createElement('div');
+    div.style.width = "25%";
+    div.style.margin = "0% 2% 2% 1.5%";
     div.innerHTML = `<label class="modal-text" id="intermitente">Está intermitênte?</label>`;
-    div.appendChild(listaSelecao([{ valor: 'nao', texto: 'Não' }, { valor: 'sim', texto: 'Sim' }]));
+    div.append(listaSelecao([{ valor: 'nao', texto: 'Não' }, { valor: 'sim', texto: 'Sim' }]));
+    return div;
+}
+function amostraDeChamadas() {
+    const div = document.createElement('div');
     div.innerHTML += `<table>
             <tr>
                 <th>
@@ -65,26 +71,13 @@ function amostraDeChamadas(div) {
         return div;
 }
 function solicitacaoInsumos() {
-    containerProcedimentos.innerHTML = `<h4>Produto:</h4>`;
-    containerProcedimentos.appendChild(listaSelecao([{ valor: 'selecione', texto: 'Selecione' }, { valor: 'aparelho-ip', texto: 'Aparelho IP' }, { valor: 'fonte-poe', texto: 'Fonte de Energia' }, { valor: 'cabo-rede', texto: 'Cabo de Rede Patch Cord' }, { valor: 'Fone de ouvido', texto: 'Fone de Ouvido' }]));
-    containerProcedimentos.children[1].addEventListener('input', () => {
-        const valorSelecionado = containerProcedimentos.children[1].value;
-        console.log(valorSelecionado);
+    containerProcedimentos.append(produto());
+    containerProcedimentos.lastChild.addEventListener('input', () => {
+        const valorSelecionado = containerProcedimentos.lastChild.lastChild.value;
 
         if (valorSelecionado == 'aparelho-ip') {
-            containerProcedimentos.innerHTML += `<h4>Configuração  de Rede</h4>`;
-
-            containerProcedimentos.appendChild(listaSelecao([{ valor: 'selecione', texto: 'Selecione' },{ valor: 'dhcp', texto: 'DHCP' }, {valor: 'ip-fixo', texto: 'IP Fixo'}]));
-            console.log(containerProcedimentos);
-            containerProcedimentos.children[3].addEventListener('input', () => {
-                const valorSelecionado = containerProcedimentos.children[3].value;
-                
-                if (valorSelecionado=='ip-fixo') {
-                    console.log('ipfixo');
-                } 
-            });
-        } else if (valorSelecionado == 'fonte-poe' || valorSelecionado == 'cabo-rede')
-            console.log('Equipamento Quebrado');
+            containerProcedimentos.append(configuracaoDeRede());
+        }
     });
 
     const campos = [{valor: 'cep', texto: 'CEP'}, {valor: 'rua', texto: 'Rua'}, {valor: 'num', texto: 'Nº'}, {valor: 'bairro', texto: 'Bairro'}, {valor: 'cidade', texto: 'Cidade'}, {valor: 'estado', texto: 'Estado'}];
@@ -92,6 +85,20 @@ function solicitacaoInsumos() {
     campos.forEach(campo => {
          caixaTexto('cx-entrada', containerProblema, campo);
     });
+}
+
+function produto() {
+    const div = document.createElement('div');
+    div.innerHTML = `<h4>Produto:</h4>`;
+    div.appendChild(listaSelecao([{ valor: 'selecione', texto: 'Selecione' }, { valor: 'aparelho-ip', texto: 'Aparelho IP' }, { valor: 'fonte-poe', texto: 'Fonte de Energia' }, { valor: 'cabo-rede', texto: 'Cabo de Rede Patch Cord' }, { valor: 'Fone de ouvido', texto: 'Fone de Ouvido' }]));
+    return div;
+}
+
+function configuracaoDeRede() {
+    const div = document.createElement('div');
+    div.innerHTML = `<h4>Configuração  de Rede</h4>`;
+    div.appendChild(listaSelecao([{ valor: 'selecione', texto: 'Selecione' }, { valor: 'dhcp', texto: 'DHCP' }, { valor: 'ip-fixo', texto: 'IP Fixo' }]));
+    return div;
 }
 function aberturaChamado() {
     console.log(teste);
