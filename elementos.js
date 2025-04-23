@@ -30,10 +30,3 @@ function areaTexto() {
     caixaDeTexto.maxLength = 300;
     return caixaDeTexto;
 }
-function dropLabel(classe) {
-    const div = document.createElement('div');
-    div.className = classe;
-    div.innerHTML = `<label class="modal-text" id="intermitente">Está intermitênte?</label>`;
-    div.append(listaSelecao([{ valor: 'nao', texto: 'Não' }, { valor: 'sim', texto: 'Sim' }], "cx-entrada"));
-    return div;
-}

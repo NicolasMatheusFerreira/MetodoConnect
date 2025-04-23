@@ -9,9 +9,9 @@ function categoriaServicos() {
     limparCampos();
 
     switch (categoriaServico) {
-        case "selecione":            
+        case "selecione":
             break;
-        case "servico":           
+        case "servico":
             break;
         case "noc":
             categoriaProblemaNoc();
@@ -30,12 +30,12 @@ function categoriaProblemaNoc() {
         limparCampos();
         if (categoriaProblema == "selecione") {
         } else if (categoriaProblema == "nao-faz-chamadas" || categoriaProblema == "nao-faz-nao-recebe-chamadas") {
-            containerProblema.appendChild(dropLabel("drop-label")); containerProblema.appendChild(amostraDeChamadas());
+            containerProblema.appendChild(intermitente()); containerProblema.appendChild(amostraDeChamadas());
         } else if (categoriaProblema == "nao-recebe-chamadas") {
-            containerProblema.appendChild(dropLabel("drop-label")); containerProblema.appendChild(amostraDeChamadas());
+            containerProblema.appendChild(intermitente()); containerProblema.appendChild(amostraDeChamadas());
         } else if (categoriaProblema == "solicitacao-insumos") {
-            solicitacaoInsumos();
-            containerProblema.appendChild(endereco());
+            containerProblema.append(solicitacaoInsumos());
+         //   containerProblema.appendChild(endereco());
         }
     });
 }
@@ -66,14 +66,15 @@ function amostraDeChamadas() {
     return div;
 }
 
+function intermitente() {
+    const div = document.createElement('div');
+    div.style.margin = "1%";
+    div.style.width = "25%";
+    div.innerHTML = `<label class="modal-text" id="intermitente">Está intermitênte?</label>`;
+    div.append(listaSelecao([{ valor: 'nao', texto: 'Não' }, { valor: 'sim', texto: 'Sim' }], "cx-entrada"));
+    return div;
+}
 function solicitacaoInsumos() {
-    containerProcedimentos.append(produto());
-    containerProcedimentos.lastChild.addEventListener('input', () => {
-        const valorSelecionado = containerProcedimentos.lastChild.lastChild.value;
-
-        if (valorSelecionado == 'aparelho-ip')
-            containerProcedimentos.append(configuracaoDeRede());
-    });
 }
 
 function endereco() {
