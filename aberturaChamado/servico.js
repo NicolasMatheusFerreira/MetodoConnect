@@ -5,16 +5,13 @@ const containerProblema = document.getElementById('container-problema');
 function categoriaServicos() {
     const categoriaServico = document.getElementById('categoriaServico').value;
 
+    containerCategoriaProblema.innerHTML = ``;
+    limparCampos();
+
     switch (categoriaServico) {
-        case "selecione":
-            limparCampos();
-            categoriaProblemaNoc.innerHTML = ``;
-            containerCategoriaProblema.innerHTML = ``;
+        case "selecione":            
             break;
-        case "servico":
-            limparCampos();
-            categoriaProblemaNoc.innerHTML = ``;
-            containerCategoriaProblema.innerHTML = ``;
+        case "servico":           
             break;
         case "noc":
             categoriaProblemaNoc();
@@ -33,9 +30,9 @@ function categoriaProblemaNoc() {
         limparCampos();
         if (categoriaProblema == "selecione") {
         } else if (categoriaProblema == "nao-faz-chamadas" || categoriaProblema == "nao-faz-nao-recebe-chamadas") {
-            containerProblema.appendChild(intermitencia()); containerProblema.appendChild(amostraDeChamadas());
+            containerProblema.appendChild(dropLabel("drop-label")); containerProblema.appendChild(amostraDeChamadas());
         } else if (categoriaProblema == "nao-recebe-chamadas") {
-            containerProblema.appendChild(intermitencia()); containerProblema.appendChild(amostraDeChamadas());
+            containerProblema.appendChild(dropLabel("drop-label")); containerProblema.appendChild(amostraDeChamadas());
         } else if (categoriaProblema == "solicitacao-insumos") {
             solicitacaoInsumos();
             containerProblema.appendChild(endereco());
@@ -68,14 +65,7 @@ function amostraDeChamadas() {
         </table`;
     return div;
 }
-function intermitencia() {
-    const div = document.createElement('div');
-    div.style.width = "25%";
-    div.style.margin = "1%";
-    div.innerHTML = `<label class="modal-text" id="intermitente">Está intermitênte?</label>`;
-    div.append(listaSelecao([{ valor: 'nao', texto: 'Não' }, { valor: 'sim', texto: 'Sim' }], "cx-entrada"));
-    return div;
-}
+
 function solicitacaoInsumos() {
     containerProcedimentos.append(produto());
     containerProcedimentos.lastChild.addEventListener('input', () => {
